@@ -82,31 +82,8 @@ static void update_input()
   GET_BITMASK(pad)
   switch(input_type[0])
   {
-<<<<<<< HEAD
     using enum Controller::Type;
     case Driving:
-=======
-<<<<<<< HEAD
-=======
-    case Controller::Type::Joy2BPlus:
-    case Controller::Type::BoosterGrip:
-      MASK_EVENT(Event::LeftJoystickFire9, pad, RETRO_DEVICE_ID_JOYPAD_Y);
-      [[fallthrough]];
-    case Controller::Type::Genesis:
-      MASK_EVENT(Event::LeftJoystickFire5, pad, RETRO_DEVICE_ID_JOYPAD_A);
-      [[fallthrough]];
-    case Controller::Type::QuadTari:
-    case Controller::Type::Joystick:
-      MASK_EVENT(Event::LeftJoystickLeft, pad, RETRO_DEVICE_ID_JOYPAD_LEFT);
-      MASK_EVENT(Event::LeftJoystickRight, pad, RETRO_DEVICE_ID_JOYPAD_RIGHT);
-      MASK_EVENT(Event::LeftJoystickUp, pad, RETRO_DEVICE_ID_JOYPAD_UP);
-      MASK_EVENT(Event::LeftJoystickDown, pad, RETRO_DEVICE_ID_JOYPAD_DOWN);
-      MASK_EVENT(Event::LeftJoystickFire, pad, RETRO_DEVICE_ID_JOYPAD_B);
-      break;
-
->>>>>>> 9769a96 (Add files via upload)
-    case Controller::Type::Driving:
->>>>>>> 257352f (Add files via upload)
       MASK_EVENT(Event::LeftDrivingCCW, pad, RETRO_DEVICE_ID_JOYPAD_LEFT);
       MASK_EVENT(Event::LeftDrivingCW, pad, RETRO_DEVICE_ID_JOYPAD_RIGHT);
       MASK_EVENT(Event::LeftDrivingFire, pad, RETRO_DEVICE_ID_JOYPAD_B);
@@ -161,31 +138,8 @@ static void update_input()
 
   switch(input_type[1])
   {
-<<<<<<< HEAD
     using enum Controller::Type;
     case Driving:
-=======
-<<<<<<< HEAD
-=======
-    case Controller::Type::Joy2BPlus:
-    case Controller::Type::BoosterGrip:
-      MASK_EVENT(Event::RightJoystickFire9, pad, RETRO_DEVICE_ID_JOYPAD_Y);
-      [[fallthrough]];
-    case Controller::Type::Genesis:
-      MASK_EVENT(Event::RightJoystickFire5, pad, RETRO_DEVICE_ID_JOYPAD_A);
-      [[fallthrough]];
-    case Controller::Type::QuadTari:
-    case Controller::Type::Joystick:
-      MASK_EVENT(Event::RightJoystickLeft, pad, RETRO_DEVICE_ID_JOYPAD_LEFT);
-      MASK_EVENT(Event::RightJoystickRight, pad, RETRO_DEVICE_ID_JOYPAD_RIGHT);
-      MASK_EVENT(Event::RightJoystickUp, pad, RETRO_DEVICE_ID_JOYPAD_UP);
-      MASK_EVENT(Event::RightJoystickDown, pad, RETRO_DEVICE_ID_JOYPAD_DOWN);
-      MASK_EVENT(Event::RightJoystickFire, pad, RETRO_DEVICE_ID_JOYPAD_B);
-      break;
-
->>>>>>> 9769a96 (Add files via upload)
-    case Controller::Type::Driving:
->>>>>>> 257352f (Add files via upload)
       MASK_EVENT(Event::RightDrivingCCW, pad, RETRO_DEVICE_ID_JOYPAD_LEFT);
       MASK_EVENT(Event::RightDrivingCW, pad, RETRO_DEVICE_ID_JOYPAD_RIGHT);
       MASK_EVENT(Event::RightDrivingFire, pad, RETRO_DEVICE_ID_JOYPAD_B);
