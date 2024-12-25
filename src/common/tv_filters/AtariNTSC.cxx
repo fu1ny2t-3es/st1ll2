@@ -117,7 +117,7 @@ void AtariNTSC::render(const uInt8* atari_in, uInt32 in_width, uInt32 in_height,
     });
   }
   // Make the main thread busy too
-  rgb_in == nullptr ?
+  (rgb_in == nullptr) ?
     renderThread(atari_in, in_width, in_height, myTotalThreads, 0, rgb_out, out_pitch) :
     renderWithPhosphorThread(atari_in, in_width, in_height, myTotalThreads, 0, rgb_in, rgb_out, out_pitch);
   // ...and make them join again

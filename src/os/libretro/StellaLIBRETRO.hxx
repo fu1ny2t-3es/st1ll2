@@ -65,7 +65,7 @@ class StellaLIBRETRO
       return static_cast<uInt32>(Cartridge::maxSize());
     }
 
-    uInt8* getRAM() { return system_ram; }
+    uInt8* getRAM() { return myOSystem->console().system().m6532().getRAMWrite(); }
     constexpr uInt32 getRAMSize() const { return 128; }
 
     size_t getStateSize() const;
@@ -85,7 +85,7 @@ class StellaLIBRETRO
 
     void*  getVideoBuffer() const;
     uInt32 getVideoWidth() const {
-      return getVideoZoom() == 1 ? myOSystem->console().tia().width() : getVideoWidthMax();
+      return (getVideoZoom() == 1) ? myOSystem->console().tia().width() : getVideoWidthMax();
     }
     uInt32 getVideoHeight() const {
       return myOSystem->console().tia().height();
@@ -96,8 +96,8 @@ class StellaLIBRETRO
     constexpr uInt32 getVideoHeightMax() const { return 312; }
 
     uInt32 getRenderWidth() const {
-      return getVideoZoom() == 1 ? myOSystem->console().tia().width() * 2
-                                 : getVideoWidthMax();
+      return (getVideoZoom() == 1) ? myOSystem->console().tia().width() * 2
+                                   : getVideoWidthMax();
     }
     uInt32 getRenderHeight() const {
       return myOSystem->console().tia().height() * getVideoZoom();
@@ -183,8 +183,6 @@ class StellaLIBRETRO
 
     unique_ptr<Int16[]> audio_buffer;
     uInt32 audio_samples{0};
-
-    uInt8 system_ram[128];
 
     // (31440 rate / 50 Hz) * 16-bit stereo * 1.25x padding
     static constexpr uInt32 audio_buffer_max = (31440 / 50 * 4 * 5) / 4;

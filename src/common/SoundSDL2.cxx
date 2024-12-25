@@ -321,7 +321,7 @@ void SoundSDL2::initResampler()
     Int16* nextFragment = nullptr;
 
     if(myUnderrun)
-      nextFragment = myAudioQueue->size() >= myEmulationTiming->prebufferFragmentCount()
+      nextFragment = (myAudioQueue->size() >= myEmulationTiming->prebufferFragmentCount())
         ? myAudioQueue->dequeue(myCurrentFragment)
         : nullptr;
     else
