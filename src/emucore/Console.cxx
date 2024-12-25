@@ -88,7 +88,7 @@ namespace {
     speed = std::abs(speed);
 
     return BSPF::clamp(
-      static_cast<int>(round(100 * (speed >= 1 ? speed - 1 : -1 / speed + 1))),
+      static_cast<int>(round(100 * ((speed >= 1) ? speed - 1 : -1 / speed + 1))),
       MIN_SPEED, MAX_SPEED
     );
   }
@@ -97,7 +97,7 @@ namespace {
   {
     const float f_speed = static_cast<float>(speed) / 100;
 
-    return speed < 0 ? -1 / (f_speed - 1) : 1 + f_speed;
+    return (speed < 0) ? -1 / (f_speed - 1) : 1 + f_speed;
   }
 
   string formatSpeed(int speed) {
@@ -851,8 +851,13 @@ void Console::changeVerticalCenter(int direction)
   myProperties.set(PropType::Display_VCenter, ss.view());
   if (vcenter != myTIA->vcenter()) myTIA->setVcenter(vcenter);
 
+<<<<<<< HEAD
   val << (vcenter ? vcenter > 0 ? "+" : "" : " ") << vcenter << "px";
   myOSystem.frameBuffer().showGaugeMessage("V-Center", val.view(), vcenter,
+=======
+  val << (vcenter ? (vcenter > 0) ? "+" : "" : " ") << vcenter << "px";
+  myOSystem.frameBuffer().showGaugeMessage("V-Center", val.str(), vcenter,
+>>>>>>> 7efe92d (Add files via upload)
                                       myTIA->minVcenter(), myTIA->maxVcenter());
 }
 
@@ -880,7 +885,7 @@ void Console::changeVSizeAdjust(int direction)
 
   ostringstream val;
 
-  val << (newAdjustVSize ? newAdjustVSize > 0 ? "+" : "" : " ")
+  val << (newAdjustVSize ? (newAdjustVSize > 0) ? "+" : "" : " ")
       << newAdjustVSize << "%";
   myOSystem.frameBuffer().showGaugeMessage("V-Size", val.view(), newAdjustVSize, -5, 5);
 }
@@ -1231,8 +1236,13 @@ void Console::changePaddleCenterX(int direction)
   Paddles::setAnalogXCenter(center);
 
   ostringstream val;
+<<<<<<< HEAD
   val << (center ? center > 0 ? "+" : "" : " ") << center * 5 << "px";
   myOSystem.frameBuffer().showGaugeMessage("Paddles x-center ", val.view(), center,
+=======
+  val << (center ? (center > 0) ? "+" : "" : " ") << center * 5 << "px";
+  myOSystem.frameBuffer().showGaugeMessage("Paddles x-center ", val.str(), center,
+>>>>>>> 7efe92d (Add files via upload)
                                            Paddles::MIN_ANALOG_CENTER, Paddles::MAX_ANALOG_CENTER);
 }
 
@@ -1246,8 +1256,13 @@ void Console::changePaddleCenterY(int direction)
   Paddles::setAnalogYCenter(center);
 
   ostringstream val;
+<<<<<<< HEAD
   val << (center ? center > 0 ? "+" : "" : " ") << center * 5 << "px";
   myOSystem.frameBuffer().showGaugeMessage("Paddles y-center ", val.view(), center,
+=======
+  val << (center ? (center > 0) ? "+" : "" : " ") << center * 5 << "px";
+  myOSystem.frameBuffer().showGaugeMessage("Paddles y-center ", val.str(), center,
+>>>>>>> 7efe92d (Add files via upload)
                                            Paddles::MIN_ANALOG_CENTER, Paddles::MAX_ANALOG_CENTER);
 }
 
@@ -1328,18 +1343,23 @@ float Console::currentFrameRate() const
   const uInt32 scalinesLastFrame = myTIA->frameBufferScanlinesLastFrame();
 
   return
+<<<<<<< HEAD
     scalinesLastFrame != 0 ?
       (myConsoleTiming == ConsoleTiming::ntsc ? 262.F * 60.F : 312.F * 50.F)
         / myTIA->frameBufferScanlinesLastFrame() :
       0;
+=======
+    ((myConsoleTiming == ConsoleTiming::ntsc) ? 262.F * 60.F : 312.F * 50.F) /
+     myTIA->frameBufferScanlinesLastFrame();
+>>>>>>> f552d97 (Add files via upload)
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 int Console::gameRefreshRate() const
 {
   return
-    myDisplayFormat == "NTSC" || myDisplayFormat == "PAL60" ||
-    myDisplayFormat == "SECAM60" ? 60 : 50;
+    (myDisplayFormat == "NTSC" || myDisplayFormat == "PAL60" ||
+    myDisplayFormat == "SECAM60") ? 60 : 50;
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

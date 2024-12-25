@@ -43,10 +43,17 @@ void DevSettingsHandler::loadSettings(SettingsSet set)
 
   myFrameStats[set] = settings.getBool(prefix + "stats");
   myDetectedInfo[set] = settings.getBool(prefix + "detectedinfo");
+<<<<<<< HEAD
   // AtariVox/SaveKey/PlusROM access
   myExternAccess[set] = settings.getBool(prefix + "extaccess");
   myConsole[set] = settings.getString(prefix + "console") == "7800" ? 1 : 0;
+<<<<<<< HEAD
   myPlusROM[set] = devSettings ? settings.getBool("dev.plusroms.on") : true;
+=======
+=======
+  myConsole[set] = (settings.getString(prefix + "console") == "7800") ? 1 : 0;
+>>>>>>> c0b93f4 (Update libretro.cxx)
+>>>>>>> 62c6966 (Update libretro.cxx)
   // Randomization
   myRandomBank[set] = settings.getBool(prefix + "bankrandom");
   myRandomizeTIA[set] = settings.getBool(prefix + "tiarandom");
@@ -107,7 +114,7 @@ void DevSettingsHandler::saveSettings(SettingsSet set)
 
   settings.setValue(prefix + "stats", myFrameStats[set]);
   settings.setValue(prefix + "detectedinfo", myDetectedInfo[set]);
-  settings.setValue(prefix + "console", myConsole[set] == 1 ? "7800" : "2600");
+  settings.setValue(prefix + "console", (myConsole[set] == 1) ? "7800" : "2600");
   if(myOSystem.hasConsole())
     myOSystem.eventHandler().set7800Mode();
 
