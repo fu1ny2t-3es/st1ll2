@@ -140,7 +140,44 @@ namespace {
 #define do_cflag_bit(x) cFlag = (x)
 #define do_vflag_bit(x) vFlag = (x)
 
+<<<<<<< HEAD
 }  // namespace
+=======
+#define THUMB_LOG
+
+#if defined(THUMB_LOG)
+#include <stdio.h>
+
+static unsigned char thumb_map[0x400000 * 2];
+static unsigned int thumb_map_flag;
+static FILE *thumb_fp;
+
+void THUMB_LOG_OP(uInt32 address, uInt16 opcode)
+{
+	uInt32 map_addr = address;
+	static int cycles = 0;
+
+	if(address >= 0x00000000 && address < 0x40000000) { map_addr += 0x000000; }
+	if(address >= 0x40000000 && address < 0x80000000) { map_addr += 0x400000; }
+	map_addr &= 0x3fffffff;
+ 
+	cycles++;
+	thumb_map_flag = 0;
+
+	if(thumb_map[map_addr] == 0) {
+		thumb_map[map_addr] = 1;
+		thumb_map_flag = 1;
+
+		if( !thumb_fp ) {
+			thumb_fp = fopen( "thumb-log.txt", "w" );
+		}
+
+		fprintf( thumb_fp, "[%d]  PC [%X] %04X\n", cycles, address, opcode );
+		fflush( thumb_fp );
+	}
+}
+#endif
+>>>>>>> 6c1a1113b (Add files via upload)
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Thumbulator::Thumbulator(const uInt16* rom_ptr, uInt16* ram_ptr, uInt32 rom_size,

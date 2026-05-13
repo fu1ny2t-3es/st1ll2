@@ -648,6 +648,7 @@ else
 endif
 
 %.o: %.cxx
+	$(if $@, $(shell echo echo CXX $<),);\
 	@if [ $(SILENT) -ne 1 ]; then\
 		$(if $@, $(shell echo echo CXX $<),);\
 	fi
