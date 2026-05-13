@@ -60,6 +60,9 @@ void AudioSettings::normalize(Settings& settings)
     case 44100:
     case 48000:
     case 96000:
+    case 192000:
+    case 384000:
+    case 768000:
       break;
 
     default:
